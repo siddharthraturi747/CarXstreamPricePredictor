@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarXstream Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        form {
+            width: 60%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 14px;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            text-align: center;
+            font-size: 20px;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Price Prediction</h1>
+    <form method="POST" action="/predict">
+        <label for="Kilometers Driven">Kilometers Driven (in KMs):</label><br>
+        <input type="text" id="Kilometers Driven" name="Kilometers Driven" required><br><br>
+
+        <label for="Car Age">Car Age (in years):</label><br>
+        <input type="number" id="Car Age" name="Car Age" required><br><br>
+
+        <label for="Fuel Type">Fuel Type:</label><br>
+        <select id="Fuel Type" name="Fuel Type" required>
+            <option value="Diesel">Diesel</option>
+            <option value="Petrol">Petrol</option>
+        </select><br><br>
+
+        <label for="Make">Make:</label><br>
+        <input type="text" id="Make" name="Make" required><br><br>
+
+        <label for="Model">Model:</label><br>
+        <input type="text" id="Model" name="Model" required><br><br>
+
+        <label for="Variant">Variant:</label><br>
+        <input type="text" id="Variant" name="Variant" required><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if predicted_price %}
+        <h2>Predicted Price: ₹{{ predicted_price }}</h2>
+    {% endif %}
+</body>
+</html>
